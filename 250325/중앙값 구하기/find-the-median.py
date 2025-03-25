@@ -1,3 +1,3 @@
 arr=list(map(int,input().split()))
 arr.sort()
-print(arr[len(arr)//2+1])
+print(arr[len(arr)//2])
