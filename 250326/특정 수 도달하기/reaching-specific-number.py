@@ -1,14 +1,11 @@
 arr = list(map(int, input().split(" ")))
 
-def tot(arr):
-    for i in range(len(arr)):
-        if arr[i] >= 250:
-            return arr[0:i]
-    return arr
-
-if len(arr) == 0:
-    print("0 0.0")
-else:
-    cut = tot(arr)
-    total = sum(cut)
-    print(f"{total} {total/len(cut):.1f}")
+tot=0
+cnt=0
+for a in arr:
+    if a>=250:
+        break
+    tot+=a
+    cnt+=1
+avg=tot/cnt
+print(f"{tot} {avg:.1f}")
