@@ -1,4 +1,4 @@
-arr = list(map(int, input().split(" ")))
+arr = list(map(int,input().split()))
 
 tot=0
 cnt=0
