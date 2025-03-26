@@ -1,9 +1,14 @@
-arr=list(map(int,input().split(" ")))
+arr = list(map(int, input().split(" ")))
+
 def tot(arr):
     for i in range(len(arr)):
-        if arr[i]>=250:
+        if arr[i] >= 250:
             return arr[0:i]
     return arr
-cut=tot(arr)
-total=sum(cut)
-print(f"{total} {total/len(cut):.1f}")
+
+if len(arr) == 0:
+    print("0 0.0")
+else:
+    cut = tot(arr)
+    total = sum(cut)
+    print(f"{total} {total/len(cut):.1f}")
