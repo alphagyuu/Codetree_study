@@ -10,5 +10,5 @@ grid=[
 for point in point_pos:
     grid[point[0]-1][point[1]-1]=point[0]*point[1]
 
-for i in range(m):
+for i in range(n):
     print(*grid[i])
