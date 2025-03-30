@@ -1,11 +1,11 @@
-ln=int(input())
-words=[
-    input()
-    for i in range(ln)
+slist=[
+    input() for i in range(10)
 ]
 a=input()
-pos=[]
-for word in words:
-    if word[0]==a:
-        pos.append(len(word))
-print(f"{len(pos)} {sum(pos)/len(pos):.2f}")
+check=0
+for s in slist:
+    if s[-1]==a:
+        print(s)
+        check+=1
+if check==0:
+    print("None")
