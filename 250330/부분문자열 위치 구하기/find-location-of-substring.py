@@ -24,3 +24,5 @@ else:
 '''
 if part in word:
     print(word.index(part))
+else:
+    print(-1)
