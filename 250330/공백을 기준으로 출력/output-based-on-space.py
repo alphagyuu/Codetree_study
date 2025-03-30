@@ -5,3 +5,5 @@ while " " in s3:
     s3.remove(" ")
 for s in s3:
     print(s,end='')
+
+#s3=(s1+s2).replace(" ","")
