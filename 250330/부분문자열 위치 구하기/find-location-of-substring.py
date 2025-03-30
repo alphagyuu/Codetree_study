@@ -1,5 +1,7 @@
 word=input()
 part=input()
+
+'''
 pidx=0
 yes=False
 pos=0
@@ -19,3 +21,6 @@ if yes:
     print(pos)
 else:
     print(-1)
+'''
+if part in word:
+    print(word.index(part))
