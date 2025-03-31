@@ -8,5 +8,5 @@ for i in range(3,b+1):
             break
     if is_p:
         primes.append(i)
-p_in_range=[p for p in primes if p>=a]
+p_in_range=[p for p in primes if p>=a and p<=b]
 print(sum(p_in_range))
