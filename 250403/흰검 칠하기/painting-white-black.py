@@ -6,7 +6,7 @@ insts=[[int(x),d] for x,d in insts]
 
 front=-sum(x for [x,d] in insts if d=="L")
 back=sum(x for [x,d] in insts if d=="R")
-axis=["e"]*(back-front)
+axis=["e"]*(back-front+1)
 
 def R(s):
     if s=="e":
