@@ -35,10 +35,11 @@ pos=-front
 for inst in insts:
     if inst[1]=="R":
         axis[pos:pos+inst[0]]=[str(R(c)) for c in axis[pos:pos+inst[0]]]
-        pos+=inst[0]
+        pos=pos+inst[0]-1
+        
     else:
-        axis[pos-inst[0]:pos]=[str(L(c)) for c in axis[pos-inst[0]:pos]]
-        pos-=inst[0]
+        axis[pos-inst[0]+1:pos+1]=[str(L(c)) for c in axis[pos-inst[0]+1:pos+1]]
+        pos=pos-inst[0]+1
 
 final=[x[-1] for x in axis]
 #print(axis)
