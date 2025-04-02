@@ -41,6 +41,6 @@ for inst in insts:
         pos-=inst[0]
 
 final=[x[-1] for x in axis]
-print(axis)
+#print(axis)
 
 print(final.count("w"),final.count("b"),final.count("g"))
