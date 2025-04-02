@@ -9,6 +9,6 @@ def days_in_month(m):
     else:
         return 30
 months=[days_in_month(i+1) for i in range(12)]
-x1=sum(months[0:m1])+d1
-x2=sum(months[0:m2])+d2
-print(x2-x1)
+x1=sum(months[0:m1-1])+d1
+x2=sum(months[0:m2-1])+d2
+print(x2-x1+1)
