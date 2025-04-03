@@ -1,53 +1,52 @@
-ln,lm=map(int,input().split())
-amove=[
-    input().split()
-    for _ in range(ln)
-]
-bmove=[
-    input().split()
-    for _ in range(lm)
-]
-amove=[[int(t),d] for t,d in amove]
-bmove=[[int(t),d] for t,d in bmove]
-apos=0
-bpos=0
-end=False
-count=0
-while not end:
-    if not amove[0][1]=="X":
-        if amove[0][1]=="R":
-            apos+=1
+ln, lm = map(int, input().split())
+
+amove = [input().split() for _ in range(ln)]
+bmove = [input().split() for _ in range(lm)]
+
+amove = [[int(t), d] for t, d in amove]
+bmove = [[int(t), d] for t, d in bmove]
+
+apos = bpos = 0
+amp = bmp = 0
+count = 0
+
+# 각 명령 남은 시간 및 방향
+atime, adir = amove[0]
+btime, bdir = bmove[0]
+
+while True:
+    # A 움직임
+    if adir is not None:
+        apos += 1 if adir == "R" else -1
+        atime -= 1
+
+    # B 움직임
+    if bdir is not None:
+        bpos += 1 if bdir == "R" else -1
+        btime -= 1
+
+    # 충돌 체크
+    if apos == bpos and adir != bdir:
+        count += 1
+
+    # A 다음 명령 처리
+    if adir is not None and atime == 0:
+        amp += 1
+        if amp < ln:
+            atime, adir = amove[amp]
         else:
-            apos-=1
-        amove[0][0]-=1
+            adir = None  # 멈춘 상태
 
-
-    if not bmove[0][1]=="X":
-        if bmove[0][1]=="R":
-            bpos+=1
+    # B 다음 명령 처리
+    if bdir is not None and btime == 0:
+        bmp += 1
+        if bmp < lm:
+            btime, bdir = bmove[bmp]
         else:
-            bpos-=1
-        bmove[0][0]-=1
-    
+            bdir = None  # 멈춘 상태
 
-    if amove[0][1]!=bmove[0][1] and apos==bpos:
-        count+=1
-
-    #print(amove[0],bmove[0],apos,bpos,count)
-
-    if amove[0][1]=="X" and bmove[0][1]=="X":
-        end=True
-    else:
-        if amove[0][0]==0:
-            if len(amove)==1:
-                amove[0][1]="X"
-            else:
-                amove=amove[1:]
-        if bmove[0][0]==0:
-            if len(bmove)==1:
-                bmove[0][1]="X"
-            else:
-                bmove=bmove[1:]
-
+    # 종료 조건
+    if adir is None and bdir is None:
+        break
 
 print(count)
