@@ -16,6 +16,7 @@ for i in range(1,-1,-1):
             axis[y+yOFFSET][x+xOFFSET]=i
         
 x1,x2,y1,y2=len(axis[0])-1,0,len(axis)-1,0
+change=False
 for y in range(len(axis)):
     for x in range(len(axis[0])):
         if axis[y][x]==1:
@@ -27,4 +28,8 @@ for y in range(len(axis)):
                 y1=y
             if y>y2:
                 y2=y
-print((x2-x1+1)*(y2-y1+1))
+            change=True
+if change:
+    print((x2-x1+1)*(y2-y1+1))
+else:
+    print(0)
