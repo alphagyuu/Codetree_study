@@ -33,8 +33,10 @@ for t in range(racetime):
         new_hof=[1,0]
     else:
         new_hof=[0,1]
+    if t==racetime-1:
+        break
     if new_hof!=hof:
         count+=1
         hof=new_hof
-    #print(arun[pa],brun[pb],hof)
+#    print(arun[pa],brun[pb],aloc,bloc,hof)
 print(count)
