@@ -11,7 +11,7 @@ pa=0
 pb=0
 aloc=0
 bloc=0
-hof=[0,0]
+hof=[1,1]
 count=0
 racetime=sum([t for x,t in arun])
 for t in range(racetime):
@@ -33,8 +33,6 @@ for t in range(racetime):
         new_hof=[1,0]
     else:
         new_hof=[0,1]
-    if t==racetime-1:
-        break
     if new_hof!=hof:
         count+=1
         hof=new_hof
