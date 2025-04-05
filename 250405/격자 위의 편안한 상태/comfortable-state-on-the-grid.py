@@ -26,5 +26,5 @@ for x,y in insts:
         y_c=y+dy[i]-1
         if in_axis(x_c,y_c):
             cnt+=axis[y_c][x_c]
-    print(1 if cnt>=3 else 0)
+    print(1 if cnt==3 else 0)
         
