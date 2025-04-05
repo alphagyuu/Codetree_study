@@ -9,7 +9,7 @@ if D=="U" or D=="D":
         if R==1 and D=="U":
             d=1
             D="D"
-        elif R==N:
+        elif R==N and D=="D":
             d=-1
             D="U"
         else:
