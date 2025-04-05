@@ -17,6 +17,8 @@ def in_box(x,y):
 
 for i in range(N*N):
     box[y][x]=i+1
+    if N==1:
+        break
     if box[y+dy[(d+1)%4]][x+dx[(d+1)%4]]==0:
         d=(d+1)%4
     x=x+dx[d]
