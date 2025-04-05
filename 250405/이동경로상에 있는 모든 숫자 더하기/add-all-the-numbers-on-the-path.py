@@ -4,10 +4,7 @@ box=[
     list(map(int,input().split()))
     for _ in range(N)
 ]
-path=[
-    [0]*N
-    for _ in range(N)
-]
+
 
 dx=[0,1,0,-1]
 dy=[-1,0,1,0]
@@ -20,9 +17,8 @@ def in_box(x,y):
         return(True)
     else:
         return(False)
-path[y][x]=1
+tot=box[y][x]
 for i in insts:
-    #print(x,y)
     if i=="R":
         d=(d+1)%4
     elif i=="L":
@@ -31,11 +27,9 @@ for i in insts:
         if in_box(x+dx[d],y+dy[d]):
             x+=dx[d]
             y+=dy[d]
-    path[y][x]=1
-
-tot=0
-for i in range(N):
-    for j in range(N):
-        if path[i][j]>0:
-            tot+=box[i][j]
+            tot+=box[y][x]
+    #print(x,y)
 print(tot)
+
+
+#20분
