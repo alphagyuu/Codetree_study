@@ -11,7 +11,7 @@ count=0
 for y in range(ln):
     for x in range(ln):
         kan=0
-        for i in range(ln):
+        for i in range(4):
             if y+dy[i]>=0 and y+dy[i]<ln and x+dx[i]>=0 and x+dx[i]<ln:
                 kan+=axis[y+dy[i]][x+dx[i]]
         if kan>=3:
