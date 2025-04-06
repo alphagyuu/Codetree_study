@@ -5,17 +5,21 @@ lines=[
     tuple(map(int,input().split()))
     for _ in range(N)
 ]
+i=1
 for x1,x2 in lines:
-    for x in range(x1,x2):
-        arr[x+OFFSET]+=1
+    arr[x1+OFFSET]=i
+    arr[x2+OFFSET-1]=i
+    i+=1
 cnt=0
 for x1,x2 in lines:
-    #print(arr[x1+OFFSET:x2+OFFSET])
-    check=arr[x1+OFFSET+1:x2+OFFSET-1]
-    if x2-x1==1 and arr[x1+OFFSET]>1:
-        continue
-    elif max(check)>arr[x1+OFFSET] or max(check)>arr[x2+OFFSET-1]:
-        continue
-    else:
+    check=arr[x1+OFFSET:x2+OFFSET]
+    is_valid=True
+    for i in range(x2-x1):
+        for j in range(i+1,x2-x1):
+            if check[i]==check[j] and check[i]!=0:
+                is_valid=False
+    if is_valid:
         cnt+=1
 print(cnt)
+
+
