@@ -12,11 +12,10 @@ for x1,x2 in lines:
     i+=1
 cnt=0
 for x1,x2 in lines:
-    check=arr[x1+OFFSET:x2+OFFSET]
     is_valid=True
     for i in range(x2-x1):
         for j in range(i+1,x2-x1):
-            if check[i]==check[j] and check[i]!=0:
+            if arr[i+x1+OFFSET]==arr[j+x1+OFFSET] and arr[i+x1+OFFSET]!=0:
                 is_valid=False
     if is_valid:
         cnt+=1
