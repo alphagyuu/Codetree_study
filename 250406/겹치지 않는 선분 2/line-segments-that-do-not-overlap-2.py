@@ -10,8 +10,9 @@ for i in range(N):
     for j in range(i+1,N):
         ax1,ax2=lines[i]
         bx1,bx2=lines[j]
-        if (bx1<ax1 and ax2<bx2) or (ax1<bx1 and ax2<bx2):
+        if (bx1<ax1 and ax2<bx2) or (ax1<bx1 and bx2<ax2):
             l_val[i]=1
+            l_val[j]=1
 print(l_val.count(0))
 
 
