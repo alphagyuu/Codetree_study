@@ -72,7 +72,7 @@ def check():
                 else:
                     combo=1
                 if combo==5:
-                    return (before,x+3,y-1)
+                    return (before,y-1,x+3)
             before=pan[y][x]
             x-=1
             y+=1
@@ -88,7 +88,7 @@ def check():
                 else:
                     combo=1
                 if combo==5:
-                    return (before,x+3,y-1)
+                    return (before,y-1,x+3)
             before=pan[y][x]
             x-=1
             y+=1    
