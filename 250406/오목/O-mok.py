@@ -41,6 +41,7 @@ def check():
                     combo=1
                 if combo==5:
                     return (before,x-1,y-1)
+            before=pan[y][x]
             x+=1
             y+=1
     before=pan[1][0]
@@ -56,6 +57,7 @@ def check():
                     combo=1
                 if combo==5:
                     return (before,x-1,y-1)
+            before=pan[y][x]
             x+=1
             y+=1
     before=pan[0][4]
@@ -71,12 +73,15 @@ def check():
                     combo=1
                 if combo==5:
                     return (before,x+3,y-1)
+            before=pan[y][x]
             x-=1
-            y+=1                         
+            y+=1
+    before=pan[18][1]
+    combo=0                         
     for i in range(1,15):
         x=18
         y=i
-        while y>=0:
+        while y<19:
             if pan[y][x]!=0:
                 if before==pan[y][x]:
                     combo+=1
@@ -84,10 +89,14 @@ def check():
                     combo=1
                 if combo==5:
                     return (before,x+3,y-1)
+            before=pan[y][x]
             x-=1
             y+=1    
-
+    return -1
 out=check()
-print(out[0])
-print(*out[1:])        
+if out==-1:
+    print(-1)
+else:
+    print(out[0])
+    print(*out[1:])        
         
