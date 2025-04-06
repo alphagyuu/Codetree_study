@@ -13,10 +13,13 @@ for x1,x2 in lines:
 cnt=0
 for x1,x2 in lines:
     is_valid=True
+    seen=[]
     for i in range(x2-x1):
-        for j in range(i+1,x2-x1):
-            if arr[i+x1+OFFSET]==arr[j+x1+OFFSET] and arr[i+x1+OFFSET]!=0:
-                is_valid=False
+        val=arr[i+x1+OFFSET]
+        if val in seen:
+            is_valid=False
+        if val!=0:
+            seen.append(val)
     if is_valid:
         cnt+=1
 print(cnt)
