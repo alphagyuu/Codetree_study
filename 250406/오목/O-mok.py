@@ -95,7 +95,7 @@ def check():
     return -1
 out=check()
 if out==-1:
-    print(-1)
+    print(0)
 else:
     print(out[0])
     print(*out[1:])        
