@@ -76,7 +76,7 @@ def check():
     for i in range(1,15):
         x=18
         y=i
-        while x>=0:
+        while y>=0:
             if pan[y][x]!=0:
                 if before==pan[y][x]:
                     combo+=1
