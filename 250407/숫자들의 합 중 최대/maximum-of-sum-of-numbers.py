@@ -1,9 +1,11 @@
-x,y=map(str,input().split())
+x,y=map(int,input().split())
 
-totx=0
-toty=0
-for i in range(len(x)):
-    totx+=int(x[i])
-for i in range(len(y)):
-    toty+=int(y[i])
-print(max(totx,toty))
+max_hap=0
+for i in range(x,y+1):
+    s=str(i)
+    hap=0
+    for j in range(len(s)):
+        hap+=int(s[j])
+    if hap>max_hap:
+        max_hap=hap
+print(max_hap)
