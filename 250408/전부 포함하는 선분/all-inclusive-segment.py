@@ -18,21 +18,20 @@ lines=[
 x1s=[x1 for x1,_ in lines]
 x2s=[x2 for _,x2 in lines]
 
-frontx=min(x1s)
-backx=max(x2s)
 
-maxdel=0
-delidx=0
-for i in range(len(lines)):
-    length=0
-    if lines[i][0]==frontx:
-        length=lines[i][1]-frontx
-    if lines[i][1]==backx:
-        length=backx-lines[i][0]
-    if maxdel<length:
-        maxdel=length
-        delidx=i
-lines.pop(delidx)
+fronti=x1s.index(min(x1s))
+backi=x2s.index(max(x2s))
+
+x1s.sort()
+x2s.sort()
+
+if x1s[1]-x1s[0]>x2s[-1]-x2s[-2]:
+    lines.pop(fronti)
+    #앞쪽 제거
+else:
+    lines.pop(backi)
+
+
 
 x1s=[x1 for x1,_ in lines]
 x2s=[x2 for _,x2 in lines]
