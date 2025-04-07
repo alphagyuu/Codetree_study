@@ -15,6 +15,5 @@ for limit in range(max(nums),sum(nums)):
                 max_part=cur
             cur=n
     if bars<=M-1:
-        print(max_part)
+        print(limit)
         break
-        
