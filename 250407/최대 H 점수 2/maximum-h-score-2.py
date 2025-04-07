@@ -5,7 +5,7 @@ nums.sort()
 
 #최소~최대, +1 모두 검사. 각 값-1보다 크거나 같은 수 개수가 ~이상인지.
 maxh=0
-for n in nums:
+for n in range(min(nums),max(nums)+1):
     for i in range(2):
         cnt_h=0
         cnt_h_1=0
@@ -18,10 +18,11 @@ for n in nums:
                 cnt_h_1+=1
         if cnt_h>=h:
             h_possible=h
-        elif cnt_h_1<=L-i and cnt_h+cnt_h_1>=h: #h-1을 h로 증ㅇ가시킨 경우가 L번보다 적어야함.
+        elif cnt_h_1<=L and cnt_h_1+cnt_h>=h: #h-1을 h로 증ㅇ가시킨 경우가 L번보다 적어야함.
             h_possible=h
         if h_possible>maxh:
             maxh=h_possible
+        #print(h,cnt_h,cnt_h_1)
         if L==0:
             break
 print(maxh)
