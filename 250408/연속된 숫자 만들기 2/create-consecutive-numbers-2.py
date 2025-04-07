@@ -12,7 +12,7 @@
 ...
 3 3 -> 2
 '''
-humans=list(map(int,input().split()))
+humans=sorted(list(map(int,input().split())))
 d1=humans[1]-humans[0]
 d2=humans[2]-humans[1]
 if d2==2 or d1==2:
