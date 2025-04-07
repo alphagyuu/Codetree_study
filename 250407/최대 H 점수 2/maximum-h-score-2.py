@@ -5,7 +5,7 @@ nums.sort()
 
 #최소~최대, +1 모두 검사. 각 값-1보다 크거나 같은 수 개수가 ~이상인지.
 maxh=0
-for n in range(min(nums),max(nums)+1):
+for n in range(0,len(nums)+1):
     for i in range(2):
         cnt_h=0
         cnt_h_1=0
