@@ -10,7 +10,7 @@ for i in range(len(seats)):
     else:
         seats[i]="1"
     combo=0
-    print(seats)
+    #print(seats)
     min_combo=len(seats)
     is_edge=True
     for j in range(len(seats)):
