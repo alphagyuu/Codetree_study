@@ -18,17 +18,17 @@ suspects=[chr(x+ord('A')) for x in range(N)]
 #suspects.remove('A')
 #print(suspects)
 
-for i in range(M-1,P-1,-1):
+for i in range(M-1,P-2,-1):
     if messages[i][0] in suspects:
         suspects.remove(messages[i][0])
 
 peop_in_time_p=messages[P-1][1]
 
-for i in range(P,-1,-1):
+for i in range(P-2,-1,-1):
     if messages[i][1]==peop_in_time_p and messages[i][0] in suspects:
         suspects.remove(messages[i][0])
 
-if P==0:
+if messages[P-1][1]==0:
     print("")
 else:
     print(*suspects)
