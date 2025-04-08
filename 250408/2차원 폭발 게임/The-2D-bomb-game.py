@@ -14,10 +14,13 @@ def count_non_zeros(arr):
 
 def can_boom(): # 무한루프..? -> 0도 콤보로 처리중
     for c in range(N):
-        before=-1
+        before=0
         start_i=0
         combo=0
         for r in range(N):
+            if before==0: #####안했을때 오답 (exceptional case존재.)
+                combo=0
+                before=0
             if before!=box[r][c]:
                 # M콤보 이상 제거.
                 if combo>=M and before!=0:
@@ -27,16 +30,20 @@ def can_boom(): # 무한루프..? -> 0도 콤보로 처리중
                 combo=1
             else:
                 combo+=1
+
         if combo>=M and before!=0:
             return True
     return False
 
 def boom():
     for c in range(N):
-        before=-1
+        before=0
         start_i=0
         combo=0
         for r in range(N):
+            if before==0:
+                combo=0
+                before=0
             if before!=box[r][c]:
                 # M콤보 이상 제거.
                 if combo>=M and before!=0:
