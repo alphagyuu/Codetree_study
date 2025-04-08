@@ -103,10 +103,12 @@ box=[
 ]
 #print(N,M,K)
 for _ in range(K):
-    boom()
-    gravity()
+    while can_boom():
+        boom()
+        gravity()
     rotate()
     gravity()
+while can_boom():
     boom()
     gravity()
     #print(".")
