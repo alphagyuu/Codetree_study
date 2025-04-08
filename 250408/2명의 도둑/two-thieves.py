@@ -6,35 +6,34 @@
 """
 
 
-N,M,C=map(int,input().split())
-grid=[
-    list(map(int,input().split()))
+N, M, C = map(int, input().split())
+grid = [
+    list(map(int, input().split()))
     for _ in range(N)
 ]
-#print(grid)
-ms={}
+# print(grid)
+ms = {}
 for r in range(N):
-    for c in range(N-1):
-        weight=0
-        value=0
-        part=sorted([grid[r][c],grid[r][c+1]],reverse=True)
-        for i in range(2):
-            if weight+part[i]>C:
+    for c in range(N + 1 - M):
+        weight = 0
+        value = 0
+        part = sorted([grid[r][c + i] for i in range(M)], reverse=True)
+        for i in range(M):
+            if weight + part[i] > C:
                 continue
             else:
-                weight+=part[i]
-                value+=part[i]**2
-        #print(grid)
-        #print(part)
-        #print(weight)
-        #print(value)
-        ms[(r,c)]=value
-mlist=list(ms.items())
-mlist.sort(key=lambda item: item[1],reverse=True)
+                weight += part[i]
+                value += part[i] ** 2
+        # print(grid)
+        # print(part)
+        # print(weight)
+        # print(value)
+        ms[(r, c)] = value
+mlist = list(ms.items())
+mlist.sort(key=lambda item: item[1], reverse=True)
 #print(mlist[0:3])
-if mlist[0][0][0]==mlist[1][0][0] and abs(mlist[0][0][1]-mlist[1][0][1])==1:
-    print(mlist[0][1]+mlist[2][1])
+#print(N,M)
+if mlist[0][0][0] == mlist[1][0][0] and abs(mlist[0][0][1] - mlist[1][0][1]) == 1:
+    print(mlist[0][1] + mlist[2][1])
 else:
-    print(mlist[0][1]+mlist[1][1])
-#print(ms)
-
+    print(mlist[0][1] + mlist[1][1])
