@@ -33,7 +33,7 @@ mlist = list(ms.items())
 mlist.sort(key=lambda item: item[1], reverse=True)
 #print(mlist[0:3])
 #print(N,M)
-if mlist[0][0][0] == mlist[1][0][0] and abs(mlist[0][0][1] - mlist[1][0][1]) == 1:
+if mlist[0][0][0] == mlist[1][0][0] and abs(mlist[0][0][1] - mlist[1][0][1]) < M:
     print(mlist[0][1] + mlist[2][1])
 else:
     print(mlist[0][1] + mlist[1][1])
