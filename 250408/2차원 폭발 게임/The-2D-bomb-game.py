@@ -107,7 +107,6 @@ for _ in range(K):
     gravity()
     rotate()
     gravity()
-while can_boom():
     boom()
     gravity()
     #print(".")
