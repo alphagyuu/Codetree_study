@@ -18,10 +18,10 @@ def can_boom(): # 무한루프..? -> 0도 콤보로 처리중
         start_i=0
         combo=0
         for r in range(N):
-            if before==0: #####안했을때 오답 (exceptional case존재.)
+            if box[r][c]==0:
                 combo=0
                 before=0
-            if before!=box[r][c]:
+            elif before!=box[r][c]:
                 # M콤보 이상 제거.
                 if combo>=M and before!=0:
                     return True
@@ -41,10 +41,10 @@ def boom():
         start_i=0
         combo=0
         for r in range(N):
-            if before==0:
+            if box[r][c]==0:
                 combo=0
                 before=0
-            if before!=box[r][c]:
+            elif before!=box[r][c]:
                 # M콤보 이상 제거.
                 if combo>=M and before!=0:
                     for i in range(combo):
@@ -93,7 +93,6 @@ def rotate():
         for c in range(N):
             newarr[c][N-1-r]=box[r][c]
     box=newarr
-
 
 
 
