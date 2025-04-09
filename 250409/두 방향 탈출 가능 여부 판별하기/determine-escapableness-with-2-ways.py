@@ -15,6 +15,7 @@ CAN_EXIT=0
 
 def dfs(r,c):
     global CAN_EXIT
+    visited[r][c]=0
     if CAN_EXIT==1:
         return
     if is_exit(r,c):
@@ -27,7 +28,7 @@ def dfs(r,c):
         newc=c+dc[i]
         #새로운 값들이 격자를 벗어날 수 있음. -> 종료.
         if in_grid(newr,newc):
-            if grid[newr][newc]==1:
+            if grid[newr][newc]==1 and visited[newr][newc]==1:
                 dfs(newr,newc)
 
 
@@ -37,11 +38,11 @@ grid=[
     for _ in range(N)
 ]
 
-#뱀은 1로 표시된 visited 배열.
-#visited=[[0]*M for _ in range(N)]
-#for r in range(N):
-#    for c in range(M):
-#        visited[r][c]=grid[r][c]
+#뱀은 0로 표시된 visited 배열.
+visited=[[0]*M for _ in range(N)]
+for r in range(N):
+    for c in range(M):
+        visited[r][c]=grid[r][c]
 #grid[N][M]
 # N rows, M cols.
 #print(grid)
