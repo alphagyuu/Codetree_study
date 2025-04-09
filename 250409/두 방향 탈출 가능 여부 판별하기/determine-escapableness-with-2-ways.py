@@ -15,6 +15,8 @@ CAN_EXIT=0
 
 def dfs(r,c):
     global CAN_EXIT
+    if CAN_EXIT==1:
+        return
     if is_exit(r,c):
         CAN_EXIT = 1
         return
