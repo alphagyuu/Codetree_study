@@ -11,15 +11,17 @@ def can_go(r,c):
 def fill(r,c):
     queue=deque()
     queue.append((r,c))
+    visited[r][c] = 1
     dr=[1,0,-1,0]
     dc=[0,1,0,-1]
     while queue:
         nowr, nowc = queue.popleft()
-        visited[nowr][nowc]=1
         for diri in range(4):
             newr,newc=nowr+dr[diri],nowc+dc[diri]
             if can_go(newr,newc):
+                visited[newr][newc] = 1
                 queue.append((newr,newc))
+
 
 N,M=map(int,input().split())
 grid=[
@@ -38,7 +40,7 @@ for row in grid:
 #print(TOP_K)
 
 #K보다 낮고, 방문하지 않은 모든 지점에서 dfs 수행.
-MAX_K=1
+MAX_K=1 # 반드시 1이어야 함.
 MAX_SAFE_AREA=0
 for K in range(1,TOP_K):
     safe_areas=0
