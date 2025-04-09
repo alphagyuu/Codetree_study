@@ -38,7 +38,7 @@ for row in grid:
 #print(TOP_K)
 
 #K보다 낮고, 방문하지 않은 모든 지점에서 dfs 수행.
-MAX_K=0
+MAX_K=1
 MAX_SAFE_AREA=0
 for K in range(1,TOP_K):
     safe_areas=0
