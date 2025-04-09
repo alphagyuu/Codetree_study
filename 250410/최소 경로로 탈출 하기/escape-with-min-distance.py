@@ -51,6 +51,6 @@ length=[[0]*M for _ in range(N)]
 PATH_LENGTH=0
 bfs(0,0)
 #print(length)
-print(PATH_LENGTH)
+print(PATH_LENGTH if PATH_LENGTH>0 else -1)
 
 
