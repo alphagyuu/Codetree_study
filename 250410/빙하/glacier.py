@@ -1,6 +1,5 @@
 from collections import deque
 
-
 drs=[1,0,-1,0]
 dcs=[0,1,0,-1]
 
@@ -10,14 +9,37 @@ def in_grid(r,c):
         return True
     return False
 
-def is_effective(r,c):
-    for i in range(4):
-        newr=r+drs[i]
-        newc=c+dcs[i]
-        if in_grid(newr,newc):
-            if grid[newr][newc]==0:
-                return True
-    return False
+def first_search(r,c):
+    fs_queue=deque()
+    fs_visited[r][c]=True
+    fs_queue.append((r,c))
+    searched=deque()
+    searched.append((r,c))
+    effective=False
+    while fs_queue:
+        curr, curc = fs_queue.popleft()
+        for i in range(4):
+            newr=curr+drs[i]
+            newc=curc+dcs[i]
+            if in_grid(newr,newc):
+                if grid[newr][newc]==0 and (not fs_visited[newr][newc]):
+                    fs_visited[newr][newc]=True
+                    fs_queue.append((newr,newc))
+                    searched.append((newr,newc))
+            else:
+                effective=True
+    global VISITED_WATERS
+    if effective:
+        while searched:
+            serr,serc=searched.pop()
+            effective_waters.append((serr,serc))
+            visited[serr][serc]=True
+            VISITED_WATERS+=1
+    else:
+        while searched:
+            useless_waters.add(searched.pop())
+
+
 
 def melt():
     #effective_waters를 모두 꺼내서, 다음 단게 유효한 물들로 채움.
@@ -37,7 +59,6 @@ def melt():
                     # 해야하지만 성능 구림 -> 차라리 매 턴마다 순회하면서 없애기..?
 
 
-
 N,M=map(int,input().split())
 grid=[
     list(map(int,input().split()))
@@ -47,7 +68,7 @@ visited=[
     [False]*M for _ in range(N)
 ] # visited 처럼 사용 가능.
 effective_waters=deque()
-useless_waters=deque() # NxM일 필요가 없을지도.
+useless_waters=set() # NxM일 필요가 없을지도.
 # 매 초마다 **녹이기**
 # **유효한 물의 위치** 필요
 # **유효한 물[0]**의 **인접 빙하[1]**을 0으로 변경.
@@ -65,15 +86,15 @@ useless_waters=deque() # NxM일 필요가 없을지도.
 # [유효하지 않은 물]
 # 두 배열을 통해 관리하자!
 VISITED_WATERS=0
+fs_visited=[
+    [False]*M for _ in range(N)
+]
 for r in range(N):
     for c in range(M):
-        if grid[r][c]==0:
-            if is_effective(r,c):
-                visited[r][c]=True
-                VISITED_WATERS+=1
-                effective_waters.append((r,c))
-            else:
-                useless_waters.append((r,c))
+        if grid[r][c]==0 and not fs_visited[r][c]:
+            first_search(r,c)
+
+
 
 #print(effective_waters)
 #print(useless_waters)
@@ -88,3 +109,14 @@ while True:
         break
     else:
         GLACIERS = N * M - len(useless_waters) - VISITED_WATERS
+
+
+'''                
+            if is_effective(r,c):
+                visited[r][c]=True
+                VISITED_WATERS+=1
+                effective_waters.append((r,c))
+            else:
+                useless_waters.add((r,c))
+'''
+
