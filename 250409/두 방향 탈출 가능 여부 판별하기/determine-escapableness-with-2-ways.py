@@ -38,10 +38,10 @@ grid=[
 ]
 
 #뱀은 1로 표시된 visited 배열.
-visited=[[0]*M for _ in range(N)]
-for r in range(N):
-    for c in range(M):
-        visited[r][c]=grid[r][c]
+#visited=[[0]*M for _ in range(N)]
+#for r in range(N):
+#    for c in range(M):
+#        visited[r][c]=grid[r][c]
 #grid[N][M]
 # N rows, M cols.
 #print(grid)
