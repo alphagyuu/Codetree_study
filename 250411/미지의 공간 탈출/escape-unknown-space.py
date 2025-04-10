@@ -83,6 +83,7 @@ def map_move(r,c,now_map):
 def event_process(T):
     global F
     if T==0:
+        turn_events[0] = list((r, c, 5) for r, c, d, v in strange_event)
         return
     if T-1 not in turn_events:
         event_process(T-1)
@@ -92,13 +93,12 @@ def event_process(T):
     for i in range(len(strange_event)):
         r,c,d,v=strange_event[i]
         if T==0:
-            grid[5][r][c]=7
+            return
         elif T%v==0:
             newr=r+drs[d]
             newc=c+dcs[d]
             if in_grid(newr,newc,5):
                 if grid[5][newr][newc]==0:
-                    grid[5][newr][newc]=7
                     strange_event[i][0]=newr
                     strange_event[i][1]=newc
                     temp.append((newr,newc,5))
@@ -162,14 +162,12 @@ def find_connect(r3_0,c3_0,r3_1,c3_1):
     for i in range(4):
         r = redge[i]
         c = cedge[i]
-        idx=0
         cur_wall=walls[i]
         for t in range(M):
             r += drs[i]
             c += dcs[i]
             if miji_grid[r][c] == 0:
-                return (r,c,5),(M-1,idx,cur_wall)
-
+                return (r,c,5),(M-1,t,cur_wall)
 
 
 N,M,F=map(int,input().split())
@@ -216,7 +214,7 @@ r3_0,c3_0,r3_1,c3_1=find_3_in_miji()
 
 # print(r3_0,c3_0,r3_1,c3_1)
 connection_miji,connection_wall=find_connect(r3_0,c3_0,r3_1,c3_1)
-# print(connection_miji,connection_wall)
+#print(connection_miji,connection_wall)
 
 #bfs를 위한 visited. 0~4: 벽, 5: 미지의 공간
 visited=[]
