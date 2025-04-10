@@ -2,6 +2,7 @@
 # 4/11 03:40
 from collections import deque
 
+
 drs=[0,0,1,-1]
 dcs=[1,-1,0,0]
 #동 서 남 북
@@ -135,7 +136,8 @@ def bfs(r,c,now_map):
                         distance[new_map][newr][newc]=distance[cur_map][curr][curc]+1
                         queue.append((newr,newc,new_map))
                 if grid[new_map][newr][newc]==4:
-                    print(next_turn)
+                    global ANSWER
+                    ANSWER=next_turn
                     return
 
 
@@ -227,13 +229,15 @@ distance=[]
 for d in range(5):
     distance.append([[-1]*M for _ in range(M)])
 distance.append([[-1]*N for _ in range(N)])
-
-turn_events=dict()
-turn_events[0]=list((r,c,5) for r,c,d,v in strange_event)
+turn_events = dict()
+turn_events[0] = list((r, c, 5) for r, c, d, v in strange_event)
 #시작점 구하기
 start_r,start_c,start_map=find_start()
+
+ANSWER=-1
 #print(find_start())
 bfs(start_r,start_c,start_map)
+print(ANSWER)
 #print(turn_events)
 #print_grid(distance)
 #print_grid(visited)
