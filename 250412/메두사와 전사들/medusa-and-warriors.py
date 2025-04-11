@@ -305,7 +305,7 @@ for turn in range(TOTAL_TURNS):
     #print(warriors)
     print(MOVES0,STONE_NUM1,ATTACKS2)
 
-print(0)
+print(-1 if TOTAL_TURNS==0 else 0)
 
 #print(mds_sight(2,4))
 # returns sight_idx,sight[sight_idx],stone_warriors[sight_idx],stone_nums[sight_idx]
