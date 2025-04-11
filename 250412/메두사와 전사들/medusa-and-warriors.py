@@ -1,6 +1,8 @@
 # 04/11 22:00
-from collections import deque
 
+
+
+from collections import deque
 
 dr_UDLR=[-1,1,0,0]
 dc_UDLR=[0,0,-1,1]
@@ -92,6 +94,7 @@ def mds_sight(mds_r,mds_c):
                                 else:
                                     break
                                 r += dr_main
+                        break
                     r += dr_main
             # dc = 1 방향
             for j in range(1,N-mds_c):
@@ -112,10 +115,11 @@ def mds_sight(mds_r,mds_c):
                                 else:
                                     break
                                 r += dr_main
+                        break
                     r += dr_main
 
         #좌우도 똑같이
-        if dr_main==0: #좌,우
+        elif dr_main==0: #좌,우
             r,c = mds_r, mds_c+dc_main
             # 직진
             not_yet=True
@@ -156,6 +160,7 @@ def mds_sight(mds_r,mds_c):
                                 else:
                                     break
                                 c += dc_main
+                        break
                     c += dc_main
             # dr = 1 방향
             for j in range(1,N-mds_r):
@@ -170,12 +175,14 @@ def mds_sight(mds_r,mds_c):
                         stone_warriors[i].append(warrior_num)
                         for k in range(1, N-r):
                             r, c = r + k, c + dc_main * k
+                            #print("으아",warrior_num, r, c)
                             while True:
                                 if in_grid(r,c):
                                     sight_visited[r][c] = True
                                 else:
                                     break
                                 c += dc_main
+                        break
                     c += dc_main
 
 
@@ -236,11 +243,6 @@ for i in range(M):
         SIGHT_GRID[r][c] = i
 #print_2d_arr(SIGHT_GRID)
 for turn in range(TOTAL_TURNS):
-    SIGHT_GRID = [["X"] * N for _ in range(N)]
-    for i in range(M):
-        if i in warriors:
-            r, c = warriors[i]
-            SIGHT_GRID[r][c] = i
     MOVES0 = 0
     ATTACKS2 = 0
     #print(turn)
@@ -252,10 +254,16 @@ for turn in range(TOTAL_TURNS):
         if warriors[i]==(mds_r,mds_c):
             warriors.pop(i)
             #ATTACKS2+=1 #이건 메두사가 전사를 공격한거임.
+    SIGHT_GRID = [["X"] * N for _ in range(N)]
+    for i in range(M):
+        if i in warriors:
+            r, c = warriors[i]
+            SIGHT_GRID[r][c] = i
     SIGHT_DIR,SIGHT_rcs,STONES,STONE_NUM1=mds_sight(mds_r,mds_c)
     #print(SIGHT_rcs)
     #print(STONES)
     #print(warriors)
+    #print_2d_arr(SIGHT_GRID)
     for i in range(M):
         if i not in warriors:
             continue
