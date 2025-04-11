@@ -4,6 +4,7 @@
 
 from collections import deque
 
+
 dr_UDLR=[-1,1,0,0]
 dc_UDLR=[0,0,-1,1]
 
@@ -67,6 +68,11 @@ def mds_sight(mds_r,mds_c):
                 sight[i].append((r,c))
                 if warrior_num!="X":
                     stone_warriors[i].append(warrior_num)
+                    for x in range(M):
+                        if (x not in stone_warriors[i]) and x in warriors:
+                            if warriors[x]==warriors[warrior_num]:
+                                stone_warriors[i].append(x)
+
                     while True:
                         r+=dr_main
                         if in_grid(r,c):
@@ -86,6 +92,11 @@ def mds_sight(mds_r,mds_c):
                     sight[i].append((r, c))
                     if warrior_num != "X":
                         stone_warriors[i].append(warrior_num)
+                        for x in range(M):
+                            if (x not in stone_warriors[i]) and x in warriors:
+                                if warriors[x] == warriors[warrior_num]:
+                                    stone_warriors[i].append(x)
+
                         for k in range(1, c + 1):
                             r, c = r + dr_main * k, c - k
                             while True:
@@ -107,6 +118,11 @@ def mds_sight(mds_r,mds_c):
                     sight[i].append((r, c))
                     if warrior_num != "X":
                         stone_warriors[i].append(warrior_num)
+                        for x in range(M):
+                            if (x not in stone_warriors[i]) and x in warriors:
+                                if warriors[x] == warriors[warrior_num]:
+                                    stone_warriors[i].append(x)
+
                         for k in range(1, N-c):
                             r, c = r + dr_main * k, c + k
                             while True:
@@ -131,6 +147,11 @@ def mds_sight(mds_r,mds_c):
                 sight[i].append((r,c))
                 if warrior_num!="X":
                     stone_warriors[i].append(warrior_num)
+                    for x in range(M):
+                        if (x not in stone_warriors[i]) and x in warriors:
+                            if warriors[x]==warriors[warrior_num]:
+                                stone_warriors[i].append(x)
+
                     while True:
                         c+=dc_main
                         if in_grid(r,c):
@@ -151,6 +172,11 @@ def mds_sight(mds_r,mds_c):
                         sight[i].append((r, c))
                     if warrior_num != "X":
                         stone_warriors[i].append(warrior_num)
+                        for x in range(M):
+                            if (x not in stone_warriors[i]) and x in warriors:
+                                if warriors[x] == warriors[warrior_num]:
+                                    stone_warriors[i].append(x)
+
                         for k in range(1, r + 1):
                             r, c = r - k, c + dc_main * k
                             #print("으아",warrior_num, r, c)
@@ -173,6 +199,11 @@ def mds_sight(mds_r,mds_c):
                     sight[i].append((r, c))
                     if warrior_num != "X":
                         stone_warriors[i].append(warrior_num)
+                        for x in range(M):
+                            if (x not in stone_warriors[i]) and x in warriors:
+                                if warriors[x] == warriors[warrior_num]:
+                                    stone_warriors[i].append(x)
+
                         for k in range(1, N-r):
                             r, c = r + k, c + dc_main * k
                             #print("으아",warrior_num, r, c)
