@@ -1,12 +1,9 @@
 N,M=map(int,input().split())
 bombs=[int(input()) for _ in range(N)]
 
-def explosion(s,combo):
-    global bombs
-    bombs=bombs[:s]+bombs[s+combo:]
-
 
 def boom(M):
+    global bombs
     if len(bombs)==0:
         return True
     curn=bombs[0]
@@ -19,16 +16,23 @@ def boom(M):
             combo+=1
         else:
             if combo>=M:
-                to_explode.append((s,combo))
+                for x in range(combo):
+                    to_explode.append(x+s)
             combo=1
             s=i
             curn=newn
     if combo>=M:
-        to_explode.append((s,combo))
+        for x in range(combo):
+            to_explode.append(x+s)
     if len(to_explode)==0:
         return True
-    for s,combo in to_explode:
-        explosion(s,combo)
+    for i in to_explode:
+        bombs[i]=0
+    temp=[]
+    for i in range(len(bombs)):
+        if bombs[i]>0:
+            temp.append(bombs[i])
+    bombs=temp
     return False
 
 done=False
