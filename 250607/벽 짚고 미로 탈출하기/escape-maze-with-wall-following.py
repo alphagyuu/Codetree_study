@@ -7,7 +7,7 @@ grid=[[s for s in input()] for _ in range(N)]
 drs=[0,1,0,-1]
 dcs=[1,0,-1,0]
 
-visited=[[False]*N for _ in range(N)]
+visited=[[0]*N for _ in range(N)]
 
 def in_grid(r,c):
     if 0<=r<N and 0<=c<N:
@@ -40,13 +40,13 @@ def move(r,c,d,turn): #nr,nc,nd,turn 반환.
 
 d,turn=0,0
 while True:
-    visited[r][c]=True
+    visited[r][c]+=1
     r,c,d,turn=move(r,c,d,turn)
     if turn==-1:
         break
     if not in_grid(r,c):
         break
-    if visited[r][c]:
+    if visited[r][c]>2:
         turn=-1
         break
 
