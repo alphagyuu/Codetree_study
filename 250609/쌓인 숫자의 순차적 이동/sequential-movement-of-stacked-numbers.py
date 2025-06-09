@@ -36,17 +36,17 @@ for m in Ms:
     nr,nc=nextrc(r,c)
     if nr==-1:
         continue
-    if len(grid[r][c])==1:
-        mgrid[r][c]=0
-    if mgrid[r][c]==m:
-        mgrid[r][c]=max(grid[r][c])
     nidx_start=len(grid[nr][nc])
     temp=grid[r][c][idx:]
     grid[r][c]=grid[r][c][:idx]
     grid[nr][nc]+=temp
     for i in range(len(temp)):
         n2rci[temp[i]]=(nr,nc,nidx_start+i)
-    #print(nr,nc,temp)
+    if len(grid[r][c])==0:
+        mgrid[r][c]=0
+    elif mgrid[r][c]==m:
+        mgrid[r][c]=max(grid[r][c])
+    #print(nr,nc,temp,mgrid,grid)
 
 for row in grid:
     for ns in row:
