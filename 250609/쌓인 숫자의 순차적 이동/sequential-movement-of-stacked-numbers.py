@@ -22,7 +22,9 @@ def nextrc(r,c):
         nr,nc=r+dr,c+dc
         if not in_grid(nr,nc):
             continue
-        nn=mgrid[nr][nc]
+        if not grid[nr][nc]:
+            continue
+        nn=max(grid[nr][nc])
         if nn>maxn:
             maxn=nn
             ar,ac=nr,nc
@@ -33,6 +35,7 @@ def nextrc(r,c):
 
 for m in Ms:
     r,c,idx=n2rci[m]
+    
     nr,nc=nextrc(r,c)
     if nr==-1:
         continue
@@ -42,10 +45,6 @@ for m in Ms:
     grid[nr][nc]+=temp
     for i in range(len(temp)):
         n2rci[temp[i]]=(nr,nc,nidx_start+i)
-    if len(grid[r][c])==0:
-        mgrid[r][c]=0
-    elif mgrid[r][c]==m:
-        mgrid[r][c]=max(grid[r][c])
     #print(nr,nc,temp,mgrid,grid)
 
 for row in grid:
