@@ -10,10 +10,10 @@ int main() {
     else if(n>=80) {
         cout << "B";
     }
-    else if(n>70) {
+    else if(n>=70) {
         cout << "C";
     }
-    else if(n>60) {
+    else if(n>=60) {
         cout << "D";
     }
     else {
