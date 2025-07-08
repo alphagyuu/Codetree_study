@@ -5,8 +5,13 @@ int main() {
     int n,i,tot;
     cin >> n;
     tot=0;
-    for(i=1;tot<=n;i++) {
+    i=1;
+    while(true) {
         tot+=i;
+        if(tot>=n) {
+            break;
+        }
+        i++;
     }
-    cout << i-1;
+    cout << i;
 }
