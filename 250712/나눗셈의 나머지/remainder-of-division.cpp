@@ -5,7 +5,7 @@ int main() {
     int a,b;
     cin >> a >> b;
     int cnt[b] = {};
-    while(a>0) {
+    while(a>1) {
         cnt[a%b]++;
         a/=b;
     }
