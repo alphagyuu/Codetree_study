@@ -7,7 +7,7 @@ int main() {
     char s;
     cin >> s;
     int loc=-1,i;
-    for(i=0;i<(sizeof(lebros)/sizeof(lebros[0]));i++) {
+    for(i=0;i<lebros.size();i++) {
         if(lebros[i]==s) {
             loc=i;
             break;
