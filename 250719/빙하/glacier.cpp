@@ -22,6 +22,7 @@ int visit_cnt=0;
 
 void Start(int r=0, int c=0) {
     turn_rcs.clear();
+    visited.resize(n,vector<bool>(m,false));
     deque<pair<int,int>> dq;
     dq.push_front(make_pair(r,c));
     visited[r][c]=true;
@@ -56,7 +57,6 @@ bool Done() {
 int main() {
     cin >> n >> m;
     grid.resize(n,vector<int>(m));
-    visited.resize(n,vector<bool>(m,false));
     int i,j;
     for(i=0;i<n;i++) {
         for(j=0;j<m;j++) {
