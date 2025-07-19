@@ -22,6 +22,7 @@ int visit_cnt=0;
 
 void Start(int r=0, int c=0) {
     turn_rcs.clear();
+    visited.assign(n,vector<bool>(m,false));
     deque<pair<int,int>> dq;
     dq.push_front(make_pair(r,c));
     visited[r][c]=true;
