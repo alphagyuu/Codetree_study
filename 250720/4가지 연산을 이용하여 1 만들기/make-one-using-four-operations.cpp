@@ -54,5 +54,10 @@ int Search() {
 int main() {
     cin >> n;
     step.resize(n*2,-1);
-    cout << Search();
+    if (n==1) {
+        cout << 0;
+    }
+    else {
+        cout << Search();
+    }
 }
