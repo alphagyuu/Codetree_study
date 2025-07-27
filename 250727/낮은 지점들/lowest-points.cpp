@@ -18,7 +18,7 @@ int main(){
             dots[x]=min(dots[x],y);
         }
     }
-    int tot=0;
+    long long tot=0;
     for(unordered_map<int,int>::iterator it = dots.begin(); it!=dots.end(); it++) {
         tot+=it->second;
     }
