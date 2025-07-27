@@ -11,7 +11,7 @@ int main(){
     int x,y,i;
     for(i=0;i<N;i++) {
         cin >> x >> y;
-        if(dots.find(x) != dots.end()) {
+        if(dots.find(x) == dots.end()) {
             dots[x]=y;
         }
         else {
