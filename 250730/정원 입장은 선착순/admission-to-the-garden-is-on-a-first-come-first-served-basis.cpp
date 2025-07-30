@@ -15,7 +15,7 @@ int main() {
         people.push(make_tuple(-a,-i,t));
     }
     priority_queue<tuple<int,int,int>> wait;
-    int max_taken=0, cur_time;
+    int max_taken=0, cur_time=0;
     while(!people.empty() || !wait.empty()) {
         // 1. 현재 시간까지 도착한 사람들 대기열에 넣기
         while (!people.empty() && -get<0>(people.top()) <= cur_time) {
