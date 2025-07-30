@@ -18,7 +18,7 @@ int main() {
         b = -pq.top();
         pq.pop();
         c = -pq.top();
-        cout << long long (a*b*c) << "\n";
+        cout << (long long)a*b*c << "\n";
         pq.push(-a);
         pq.push(-b);
     }
