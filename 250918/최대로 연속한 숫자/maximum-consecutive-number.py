@@ -16,7 +16,7 @@ lens.add((N+1,0,N+1))
 ns=tuple(map(int,input().split()))
 
 for n in ns:
-    idx=seqs.bisect_left((n,0))
+    idx=seqs.bisect_right((n,N+2))
     a,b=seqs[idx-1]
     seqs.remove((a,b))
     lens.remove((b-a,a,b))
