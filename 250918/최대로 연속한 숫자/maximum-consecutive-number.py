@@ -20,8 +20,10 @@ for n in ns:
     a,b=seqs[idx-1]
     seqs.remove((a,b))
     lens.remove((b-a,a,b))
-    seqs.add((a,n))
-    seqs.add((n+1,b))
-    lens.add((n-a,a,n))
-    lens.add((b-n-1,n+1,b))
+    if a!=n:
+        seqs.add((a,n))
+        lens.add((n-a,a,n))
+    if b!=n+1:
+        seqs.add((n+1,b))
+        lens.add((b-n-1,n+1,b))
     print(lens[-1][0])
