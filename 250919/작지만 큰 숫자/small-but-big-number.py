@@ -14,4 +14,4 @@ for m in ms:
         print(-1)
     else:
         print(s[idx-1])
-    s.remove(s[idx-1])
+        s.remove(s[idx-1])
