@@ -10,7 +10,7 @@ s=SortedSet(ns)
 
 for m in ms:
     idx=s.bisect_right(m)
-    if idx == 0:
+    if idx == 0 or len(s)==0:
         print(-1)
     else:
         print(s[idx-1])
