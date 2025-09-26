@@ -17,7 +17,7 @@ ncnt=0
 mcnt=0
 TOT=min(M*N,100000)
 while tot<TOT:
-    if not ms or ns[0]>ms[0]:
+    if (not ms) or ns[0]>ms[0]:
         seln.append(heapq.heappop(ns))
         ncnt+=1
     else:
