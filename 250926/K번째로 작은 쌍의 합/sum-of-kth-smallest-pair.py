@@ -9,27 +9,26 @@ ms=list(map(int,input().split()))
 heapq.heapify(ns)
 heapq.heapify(ms)
 
-seln=[]
-selm=[]
+ncnt=1
+mcnt=1
+tot=1
+seln=[heapq.heappop(ns)]
+selm=[heapq.heappop(ms)]
 
-tot=0
-ncnt=0
-mcnt=0
-TOT=min(M*N,100000)
-while tot<TOT:
-    if not ms or (ns and ns[0]<ms[0]):
-        seln.append(heapq.heappop(ns))
-        ncnt+=1
-    else:
+while tot<K:
+    if not ns or (ms and (ms[0]+seln[0])<(ns[0]+selm[0])):
         selm.append(heapq.heappop(ms))
         mcnt+=1
-    tot=ncnt*mcnt
+    else:
+        seln.append(heapq.heappop(ns))
+        ncnt+=1
+    tot=mcnt*ncnt
 
 pq=[]
 
 for i in range(ncnt):
     for j in range(mcnt):
-        heapq.heappush(pq,(seln[i]+selm[j]))
+        heapq.heappush(pq,seln[i]+selm[j])
 
 for _ in range(K-1):
     heapq.heappop(pq)
