@@ -5,7 +5,8 @@
 using namespace std;
 
 int main() {
-    int N, T;
+    int N;
+    long long T;
     cin >> N >> T;
     set<pair<int,int>> s;
     unordered_map<int,pair<int,int>> i2ss;
@@ -13,7 +14,7 @@ int main() {
     for(int i=0;i<N;i++) {
         int start,speed;
         cin >> start >> speed;
-        long long end = start + speed*T;
+        long long end = start + 1LL*speed*T;          // (1) long long 안전 계산
         s.insert(make_pair(speed,start));
         i2ss[i]=make_pair(speed,start);
         i2e[i]=end;
@@ -25,15 +26,15 @@ int main() {
         int speed,start;
         pair<int,int> ss = i2ss[i];
         speed = ss.first, start = ss.second;
-        long long end = i2e[i];
+        long long end = i2e.at(i);                    // (2) [] -> at(i)
         for(int j=i+1;j<N;j++) {
-            if(i2e.find(j)!=i2e.end() && i2e[j]<=end) {
+            if(i2e.find(j)!=i2e.end() && i2e.at(j)<=end) { // (3) [] -> at(j)
                 i2e.erase(i);
                 s.erase(ss);
                 break;
             }
         }
     }
-    cout << i2e.size();
+    cout << s.size();                                 // (4) 파이썬과 동일 기준
     return 0;
 }
