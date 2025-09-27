@@ -19,13 +19,17 @@ int main() {
         i2e[i]=end;
     }
     for(int i=0;i<N;i++) {
+        if (i2e.find(i)==i2e.end()) {
+            continue;
+        }
         int speed,start,end;
         pair<int,int> ss = i2ss[i];
         speed = ss.first, start = ss.second;
         end = i2e[i];
         for(int j=i+1;j<N;j++) {
-            if(i2e.find(j)!=i2e.end() & i2e[j]<=end) {
+            if(i2e.find(j)!=i2e.end() && i2e[j]<=end) {
                 i2e.erase(i);
+                s.erase(ss);
                 break;
             }
         }
