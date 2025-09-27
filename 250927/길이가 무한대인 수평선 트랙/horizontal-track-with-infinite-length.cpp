@@ -9,11 +9,11 @@ int main() {
     cin >> N >> T;
     set<pair<int,int>> s;
     unordered_map<int,pair<int,int>> i2ss;
-    unordered_map<int,int> i2e;
+    unordered_map<int,long long> i2e;
     for(int i=0;i<N;i++) {
         int start,speed;
         cin >> start >> speed;
-        int end = start + speed*T;
+        long long end = start + speed*T;
         s.insert(make_pair(speed,start));
         i2ss[i]=make_pair(speed,start);
         i2e[i]=end;
@@ -22,10 +22,10 @@ int main() {
         if (i2e.find(i)==i2e.end()) {
             continue;
         }
-        int speed,start,end;
+        int speed,start;
         pair<int,int> ss = i2ss[i];
         speed = ss.first, start = ss.second;
-        end = i2e[i];
+        long long end = i2e[i];
         for(int j=i+1;j<N;j++) {
             if(i2e.find(j)!=i2e.end() && i2e[j]<=end) {
                 i2e.erase(i);
