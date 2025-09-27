@@ -14,7 +14,7 @@ int main() {
     for(int i=0;i<N;i++) {
         int start,speed;
         cin >> start >> speed;
-        long long end = start + 1LL*speed*T;          // (1) long long 안전 계산
+        long long end = start + 1LL*speed*T;
         s.insert(make_pair(speed,start));
         i2ss[i]=make_pair(speed,start);
         i2e[i]=end;
@@ -26,15 +26,15 @@ int main() {
         int speed,start;
         pair<int,int> ss = i2ss[i];
         speed = ss.first, start = ss.second;
-        long long end = i2e.at(i);                    // (2) [] -> at(i)
+        long long end = i2e[i];
         for(int j=i+1;j<N;j++) {
-            if(i2e.find(j)!=i2e.end() && i2e.at(j)<=end) { // (3) [] -> at(j)
+            if(i2e.find(j)!=i2e.end() && i2e[j]<=end) {
                 i2e.erase(i);
                 s.erase(ss);
                 break;
             }
         }
     }
-    cout << s.size();                                 // (4) 파이썬과 동일 기준
+    cout << i2e.size();
     return 0;
 }
