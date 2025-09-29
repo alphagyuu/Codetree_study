@@ -33,13 +33,13 @@ N=int(input())
 cur=Node(s_init)
 
 for _ in range(N):
-    cmd=input().split()
-    cmd[0]=int(cmd[0])
+    cmds=input().split()
+    cmd=int(cmds[0])
     if cmd==1:
-        s=cmd[1]
+        s=cmds[1]
         insert_prev(cur,Node(s))
     elif cmd==2:
-        s=cmd[1]
+        s=cmds[1]
         insert_next(cur,Node(s))
     elif cmd==3:
         if cur.prev is not None:
@@ -47,6 +47,6 @@ for _ in range(N):
     else:
         if cur.next is not None:
             cur=cur.next
-    print("Null" if cur.prev==None else cur.prev.data,end=" ") 
-    print("Null" if cur==None else cur.data,end=" ") 
-    print("Null" if cur.next==None else cur.next.data)
+    print("(Null)" if cur.prev==None else cur.prev.data,end=" ") 
+    print("(Null)" if cur==None else cur.data,end=" ") 
+    print("(Null)" if cur.next==None else cur.next.data)
