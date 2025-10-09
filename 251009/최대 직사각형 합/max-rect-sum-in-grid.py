@@ -17,9 +17,13 @@ max_box=(-1000)*(N**2)
 
 for x2 in range(1,N+1):
     for x1 in range(1,x2+1):
-        for y2 in range(1,N+1):
-            for y1 in range(1,y2+1):
-                box_sum = prefix_sums[x2][y2] - prefix_sums[x1-1][y2] - prefix_sums[x2][y1-1] + prefix_sums[x1-1][y1-1]
-                max_box = max(box_sum,max_box)
-
+        inner_rows=[0]
+        for i in range(1,N+1):
+            inner_rows.append(prefix_sums[x2][i]-prefix_sums[x1-1][i]-prefix_sums[x2][i-1]+prefix_sums[x1-1][i-1])
+        cur_sum = inner_rows[1]
+        max_sum = inner_rows[1]
+        for i in range(2,N+1):
+            cur_sum = max(cur_sum+inner_rows[i],inner_rows[i])
+            max_sum = max(cur_sum,max_sum)
+        max_box = max(max_box,max_sum)
 print(max_box)
