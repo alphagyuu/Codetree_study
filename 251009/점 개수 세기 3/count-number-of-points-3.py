@@ -2,6 +2,8 @@ N,Q = map(int,input().split())
 
 ns = list(map(int,input().split()))
 
+ns.sort()
+
 n2i=dict()
 
 for i,n in enumerate(ns):
