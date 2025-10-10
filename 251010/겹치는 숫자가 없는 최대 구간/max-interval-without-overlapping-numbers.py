@@ -8,7 +8,7 @@ max_l = 0
 j = 0
 
 for i in range(N):
-    while j+1<N and cnts[ns[j]] == 0:
+    while j<N and cnts[ns[j]] == 0:
         cnts[ns[j]]+=1
         j+=1
     cnts[ns[i]]-=1
