@@ -1,41 +1,56 @@
 from sortedcontainers import SortedSet
 
+MAX = 1000000
+MIN = -MAX
+
+# 겹치지 않는 조건
+# (a1<b1 & a2<b2) or (a1>b1 & a2>b2) 
+
 N = int(input())
 
 lines = [tuple(map(int,input().split())) for _ in range(N)]
 
-starts=SortedSet()
-s2i = dict()
-ends=SortedSet()
-e2i = dict()
+x1s = SortedSet()
+x2s = SortedSet()
+x1i = dict()
+x2i = dict()
 
 for i in range(N):
-    s,e = lines[i]
-    starts.add(s)
-    s2i[s] = i
-    ends.add(-e)
-    e2i[e] = i
+    x1,x2 = lines[i]
+    x1s.add(x1)
+    x1i[x1] = i
+    x2s.add(x2)
+    x2i[x2] = i
 
-cnt_arr = [1]*N
+lmaxes=[MIN]*(N+1)
+rmins=[MAX]*(N+1)
+
+lmax = MIN
+rmin = MAX
 
 for i in range(N):
-    s,e = lines[i]
-    s_f = starts.bisect_right(s)
-    s_l = starts.bisect_right(e)
-    e_f = ends.bisect_right(-e)
-    e_l = ends.bisect_right(-s)
-    sset = set()
-    eset = set()
-    for js in range(s_f,s_l):
-        sset.add(s2i[starts[js]])
-    for je in range(e_f,e_l):
-        eset.add(e2i[-ends[je]])
-    #print(s,e)
-    #print(s_f,s_l,e_f,e_l)
-    #print(sset, eset)
-    for si in sset:
-        if si in eset:
-            cnt_arr[si] = 0
-            cnt_arr[i] = 0
+    x1=x1s[i]
+    _,x2=lines[x1i[x1]]
+    lmax = max(lmax,x2)
+    lmaxes[i] = lmax
 
-print(sum(cnt_arr))
+for i in range(N-1,-1,-1):
+    x1=x1s[i]
+    _,x2=lines[x1i[x1]]
+    rmin = min(rmin,x2)
+    rmins[i] = rmin
+
+cnt=N
+
+for i in range(N):
+    x1=x1s[i]
+    _,x2=lines[x1i[x1]]
+    lmax = lmaxes[i-1]
+    rmin = rmins[i+1]
+
+    if lmax<x2 and rmin>x2:
+        continue
+    else:
+        cnt-=1
+
+print(cnt)
