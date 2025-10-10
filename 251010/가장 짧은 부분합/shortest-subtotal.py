@@ -13,4 +13,4 @@ for i in range(N):
         min_length = min(min_length,j-i)
         tot-=ns[i]
 
-print(min_length)
+print(min_length if min_length<N else -1)
