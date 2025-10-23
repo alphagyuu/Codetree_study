@@ -26,6 +26,10 @@ for _ in range(T):
             d = ds[i]
             dx, dy = dxdy[d]
             nx, ny = x+dx, y+dy
+            if abs(nx) > 2000 or abs(ny) > 2000:
+                bi_removed[i] = True
+                remain_cnt-=1
+                continue
             poss[i] = (nx,ny)
             if (nx,ny) in npos:
                 ci = npos[(nx,ny)]
