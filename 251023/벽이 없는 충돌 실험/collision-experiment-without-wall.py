@@ -15,6 +15,9 @@ for _ in range(T):
     latest = -1
     for time in range(4003):
         npos = dict()
+        remain_cnt = N
+        if remain_cnt == 1:
+            break
         for i in range(N):
             if bi_removed[i]:
                 continue
@@ -29,9 +32,11 @@ for _ in range(T):
                 latest = time+1
                 if (w > ws[ci]) or (w == ws[ci] and i>ci):
                     bi_removed[ci] = True
+                    remain_cnt -= 1
                     npos[(nx,ny)] = i
                 else:
                     bi_removed[i] = True
+                    remain_cnt -= 1
                     continue
             else:
                 npos[(nx,ny)] = i
