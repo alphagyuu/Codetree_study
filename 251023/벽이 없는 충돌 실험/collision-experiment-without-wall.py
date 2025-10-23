@@ -31,7 +31,7 @@ for _ in range(T):
                     bi_removed[ci] = True
                     npos[(nx,ny)] = i
                 else:
-                    bi_removed[ci] = True
+                    bi_removed[i] = True
                     continue
             else:
                 npos[(nx,ny)] = i
