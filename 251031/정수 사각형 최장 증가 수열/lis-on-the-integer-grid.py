@@ -1,36 +1,37 @@
-def main():
-    n = int(input())
+from collections import deque
 
-    grid = [list(map(int,input().split())) for _ in range(n)]
+n = int(input())
+
+grid = [list(map(int,input().split())) for _ in range(n)]
     
-    moves = set()
+dp = [[1]*n for _ in range(n)]
 
-    for r in range(n):
-        for c in range(n):
-            moves.add((r,c))
+def in_grid(r,c):
+    return 0<=r<n and 0<=c<n
 
-    dr = [0,0,1,-1]
-    dc = [1,-1,0,0]
+dr = [0,0,1,-1]
+dc = [1,-1,0,0]
 
-    def in_grid(r,c):
-        return 0<=r<n and 0<=c<n
+def bfs(r,c):
+    q = deque()
+    q.append((r,c,1))
+    while q:
+        cr,cc,cm = q.popleft()
+        nm = cm + 1
+        for d in range(4):
+            nr,nc = cr+dr[d], cc+dc[d]
+            if in_grid(nr,nc) and grid[nr][nc] > grid[cr][cc] and dp[nr][nc] < nm:
+                dp[nr][nc] = nm
+                q.append((nr,nc,nm))
 
-    for turn in range(1,n*n+1):
-        empty = True
-        next_moves = set()
-        for r,c in moves:
-            for d in range(4):
-                nr, nc = r+dr[d], c+dc[d]
-                if not in_grid(nr,nc):
-                    continue
-                if grid[nr][nc] > grid[r][c]:
-                    empty = False
-                    next_moves.add((nr,nc))
-        if empty:
-            print(turn)
-            return
-        moves = next_moves
-    print(n*n)
-    return
+for r in range(n):
+    for c in range(n):
+        if dp[r][c] == 1:
+            bfs(r,c)
 
-main()
+ans = 0
+for r in range(n):
+    for c in range(n):
+        ans = max(ans,dp[r][c])
+
+print(ans)
