@@ -1,6 +1,6 @@
 import sys
 # Python의 재귀 깊이 제한을 늘려줍니다 (N이 클 경우 필요)
-sys.setrecursionlimit(20000) 
+sys.setrecursionlimit(1000000) 
 
 n = int(input())
 grid = [list(map(int,input().split())) for _ in range(n)]
