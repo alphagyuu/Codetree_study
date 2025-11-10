@@ -2,9 +2,11 @@ N,M = map(int,input().split())
 
 grid = [list(map(int,input().split())) for _ in range(N)]
 
-dp = [[1]*M for _ in range(N)]
+dp = [[0]*M for _ in range(N)]
 
-ans = 0
+dp[0][0] = 1
+
+ans = 1
 
 for r in range(N-1):
     for c in range(M-1):
