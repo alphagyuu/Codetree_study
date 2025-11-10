@@ -10,7 +10,7 @@ ans = 1
 
 for r in range(N-1):
     for c in range(M-1):
-        if grid[r][c] == 0:
+        if dp[r][c] == 0:
             continue
         for i in range(r+1,N):
             for j in range(c+1,M):
