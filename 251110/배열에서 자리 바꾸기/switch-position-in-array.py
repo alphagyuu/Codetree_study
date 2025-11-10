@@ -25,6 +25,8 @@ def pop_range_insert_next(s,e,i):
     if e.next is not None:
         e.next.prev = e
 
+
+
 N = int(input())
 Q = int(input())
 
@@ -37,16 +39,28 @@ for i in range(N+2):
 for i in range(1,N+2):
     insert_next(i2N[i-1],i2N[i])
 
+def debug():
+    cur = i2N[0]
+    while cur.next.data<N+1:
+        cur = cur.next
+        print(cur.data, end = " ")
+    print("")
+
+
 for _ in range(Q):
     a,b,c,d = map(int,input().split())
     temp = i2N[a].prev
+    if temp.data == d:
+        temp = i2N[c].prev
+        pop_range_insert_next(i2N[c],i2N[d],i2N[b])
+        #debug()
+        pop_range_insert_next(i2N[a],i2N[b],temp)
+        #debug()    
 
-    pop_range_insert_next(i2N[a],i2N[b],i2N[d])
-    pop_range_insert_next(i2N[c],i2N[d],temp)
+    else: 
+        pop_range_insert_next(i2N[a],i2N[b],i2N[d])
+        #debug()
+        pop_range_insert_next(i2N[c],i2N[d],temp)
+        #debug()    
 
-
-cur = i2N[0]
-
-while cur.next.data<N+1:
-    cur = cur.next
-    print(cur.data, end = " ")
+debug()
