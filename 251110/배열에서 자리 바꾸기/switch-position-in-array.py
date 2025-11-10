@@ -4,6 +4,60 @@ class Node:
         self.prev = None
         self.next = None
 
+def connect(s,e): # *****connect 함수는 순서 매우중요 (앞, 뒤) 순서 안지키면 error)
+    if s is not None:
+        s.next = e
+    if e is not None:
+        e.prev = s
+
+def swap(a,b,c,d):
+    ap = a.prev
+    bn = b.next
+    cp = c.prev
+    dn = d.next
+    
+    if bn == c:
+        cp = d
+        bn = a
+
+    if dn == a:
+        ap = b
+        dn = c
+
+    connect(cp,a)
+    connect(b,dn)
+    connect(ap,c)
+    connect(d,bn)
+
+N = int(input())
+Q = int(input())
+
+node = dict()
+
+for i in range(N+1):
+    node[i] = Node(i)
+
+for i in range(N):
+    connect(node[i],node[i+1])
+
+for _ in range(Q):
+    qs = list(map(int,input().split()))
+    a,b,c,d = tuple(node[q] for q in qs)
+    swap(a,b,c,d)
+
+cur = node[0]
+while cur.next!=None:
+    cur = cur.next
+    print(cur.data, end = " ")
+
+#Spaghetti
+'''
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.prev = None
+        self.next = None
+
 def insert_next(u,x):
     x.prev = u
     x.next = u.next
@@ -64,3 +118,4 @@ for _ in range(Q):
         #debug()    
 
 debug()
+'''
