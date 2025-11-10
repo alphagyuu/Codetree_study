@@ -9,6 +9,8 @@ coins.sort()
 dp = [MAX]*(M+1)
 
 for i in coins:
+    if i>M:
+        break
     dp[i] = 1
 
 for i in range(coins[0]+1,M+1):
