@@ -4,7 +4,7 @@ ns = []
 
 for n in range(1, N*3):
     if n%3 == 0 or n%5 == 0:
-        ns.append("Moo")
+        ns.append(False)
     else:
         ns.append(n)
 
@@ -16,7 +16,7 @@ cnt = 0
 def cal(l, r):
     cnt = 0
     for i in range(l,r):
-        if ns[i] == "Moo":
+        if not ns[i]:
             continue
         cnt += 1
     return cnt
