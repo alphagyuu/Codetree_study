@@ -8,8 +8,8 @@ def cal(x):
 
 while left <= right:
     mid = (left + right) // 2
-    tot = cal(mid)
     if tot >= N:
+        tot = cal(mid)
         right = mid - 1
     else:
         left = mid + 1
