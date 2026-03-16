@@ -14,6 +14,8 @@ max_k = -1
 
 while left <= right:
     mid = (left + right) // 2
+    if mid == 0:
+        mid = 1
     if is_possible(mid):
         max_k = max(mid, max_k)
         left = mid + 1
