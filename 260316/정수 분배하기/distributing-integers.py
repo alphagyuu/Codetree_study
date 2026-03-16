@@ -1,5 +1,3 @@
-import sys
-
 def is_possible(k):
     if k == 0: return True  # 0으로 나누기 방지
     cnt = 0
@@ -8,8 +6,8 @@ def is_possible(k):
     return cnt >= M
 
 # 입력 속도 향상을 위해 sys.stdin.read 사용 권장
-N, M = map(int, sys.stdin.readline().split())
-ns = [int(sys.stdin.readline()) for _ in range(N)]
+N, M = map(int, input().split())
+ns = [int(input()) for _ in range(N)]
 
 left = 1
 right = max(ns) # 모든 전선을 합친 평균보다, 가장 긴 전선의 길이가 현실적인 상한선입니다.
