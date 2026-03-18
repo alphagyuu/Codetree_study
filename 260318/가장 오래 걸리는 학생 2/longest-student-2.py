@@ -3,7 +3,7 @@ from heapq import heappush, heappop
 N, M = map(int,input().split())
 
 graph = [[] for _ in range(N+1)]
-dist = [10000]*(N+1)
+dist = [1000000000]*(N+1)
 
 for _ in range(M):
     i, j, d = map(int,input().split())
