@@ -35,4 +35,4 @@ def dijkstra(K):
 dijkstra(K)
 
 for i in range(1,N+1):
-    print(dist[i])
+    print(dist[i] if dist[i] != 100 else -1)
