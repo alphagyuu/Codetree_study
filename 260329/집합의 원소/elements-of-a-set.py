@@ -1,7 +1,3 @@
-import sys
-sys.setrecursionlimit(10**6)
-input = sys.stdin.readline
-
 n, m = map(int, input().split())
 parent = [i for i in range(n + 1)]
 size = [1] * (n + 1)  # 각 집합의 원소 개수 저장
