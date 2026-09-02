@@ -12,11 +12,11 @@ def union(a,b):
     rootb = find(b)
     if roota != rootb:
         if size[roota] < size[rootb]:
-            parent[rootb] = roota
-            size[roota] += size[rootb]
-        else:
             parent[roota] = rootb
             size[rootb] += size[roota]
+        else:
+            parent[rootb] = roota
+            size[roota] += size[rootb]
 
 for _ in range(m):
     type,a,b = map(int,input().split())
