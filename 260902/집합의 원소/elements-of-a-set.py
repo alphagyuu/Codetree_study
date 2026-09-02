@@ -12,10 +12,10 @@ def union(a,b):
     rootb = find(b)
     if roota != rootb:
         if size[roota] < size[rootb]:
-            parent[roota] = rootb
+            parent[rootb] = roota
             size[roota] += size[rootb]
         else:
-            parent[rootb] = roota
+            parent[roota] = rootb
             size[rootb] += size[roota]
 
 for _ in range(m):
